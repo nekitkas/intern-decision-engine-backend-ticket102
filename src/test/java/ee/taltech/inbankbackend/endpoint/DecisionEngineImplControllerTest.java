@@ -34,7 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension.class)
 @ExtendWith(MockitoExtension.class)
-public class DecisionEngineControllerTest {
+public class DecisionEngineImplControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
