@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class LoanValidatorImpl implements LoanValidator{
+
     @Override
     public void validateLoanAmount(Long loanAmount) throws InvalidLoanAmountException {
         if (!(DecisionEngineConstants.MINIMUM_LOAN_AMOUNT <= loanAmount)
