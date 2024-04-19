@@ -96,6 +96,7 @@ public class DecisionEngineImpl implements DecisionEngine {
             throws InvalidLoanPeriodException, InvalidLoanAmountException, InvalidPersonalCodeException {
 
         idValidator.isValid(personalCode);
+
         loanValidator.validateLoanAmount(loanAmount);
         loanValidator.validateLoanPeriod(loanPeriod);
     }
