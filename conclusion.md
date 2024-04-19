@@ -1,3 +1,5 @@
+The code seems to be working according to requirements, but does not follow the SOLID principles.
+
 DecisionEngine class have multiple responsibilities:
 1. Calculating the approved loan amount and period
 2. Parsing and validating the ID code
@@ -9,3 +11,4 @@ It is better to split these responsibilities into separate classes, classes shou
 DecisionEngine class is not closed for modification and opened for extension. If there is a need to change logic for calculating the credit modifier, we would need to make changes directly in DecisionEngine class
 
 Also, DecisionEngine directly depends on EstonianPersonalCodeValidator class, instead it should depend on interface rather than concrete implementation.
+
