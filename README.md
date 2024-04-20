@@ -74,6 +74,8 @@ The following error responses can be returned by the service:
     - `Invalid loan period!` - if the requested loan period is invalid
 - `404 Not Found` - in case no valid loans can be found
     - `No valid loan found!` - if there is no valid loan found for the given ID code, loan amount, and loan period
+    - `Customer is above the maximum age limit for receiving a loan` - if customer age is above the maximum age limit
+    - `Customer is below the minimum age limit for receiving a loan` - if customer age is below the minimum age limit
 - `500 Internal Server Error` - in case the server encounters an unexpected error while processing the request
     - `An unexpected error occurred` - if there is an unexpected error while processing the request
 
