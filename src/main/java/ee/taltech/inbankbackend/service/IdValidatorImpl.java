@@ -26,12 +26,12 @@ public class IdValidatorImpl implements IdValidator {
     public boolean validateAge(String personalCode) throws PersonalCodeException, OverageException, UnderageException {
         Period age = parser.getAge(personalCode);
         if (age.getYears() > DecisionEngineConstants.MAXIMUM_ALLOWED_AGE) {
-            throw new OverageException("Customer is above the minimum age limit for receiving a loan");
+            throw new OverageException("Customer is above the maximum age limit for receiving a loan");
         } else if (age.getYears() < DecisionEngineConstants.MINIMUM_ALLOWED_AGE) {
             throw new UnderageException("Customer is below the minimum age limit for receiving a loan");
         }
 
-        return false;
+        return true;
     }
 
     @Override

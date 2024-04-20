@@ -1,10 +1,8 @@
 package ee.taltech.inbankbackend.service;
 
+import com.github.vladislavgoltjajev.personalcode.exception.PersonalCodeException;
 import ee.taltech.inbankbackend.config.DecisionEngineConstants;
-import ee.taltech.inbankbackend.exceptions.InvalidLoanAmountException;
-import ee.taltech.inbankbackend.exceptions.InvalidLoanPeriodException;
-import ee.taltech.inbankbackend.exceptions.InvalidPersonalCodeException;
-import ee.taltech.inbankbackend.exceptions.NoValidLoanException;
+import ee.taltech.inbankbackend.exceptions.*;
 import org.springframework.stereotype.Service;
 
 /**
@@ -46,7 +44,7 @@ public class DecisionEngineImpl implements DecisionEngine {
      */
     public Decision calculateApprovedLoan(String personalCode, Long loanAmount, int loanPeriod)
             throws InvalidPersonalCodeException, InvalidLoanAmountException, InvalidLoanPeriodException,
-            NoValidLoanException {
+            NoValidLoanException, UnderageException, OverageException {
         try {
             verifyInputs(personalCode, loanAmount, loanPeriod);
             int outputLoanAmount;
@@ -93,10 +91,10 @@ public class DecisionEngineImpl implements DecisionEngine {
      * @throws InvalidLoanPeriodException If the requested loan period is invalid
      */
     private void verifyInputs(String personalCode, Long loanAmount, int loanPeriod)
-            throws InvalidLoanPeriodException, InvalidLoanAmountException, InvalidPersonalCodeException {
+            throws InvalidLoanPeriodException, InvalidLoanAmountException, InvalidPersonalCodeException, PersonalCodeException, UnderageException, OverageException {
 
         idValidator.isValid(personalCode);
-
+        idValidator.validateAge(personalCode);
         loanValidator.validateLoanAmount(loanAmount);
         loanValidator.validateLoanPeriod(loanPeriod);
     }
